@@ -2,63 +2,63 @@ let blogs = []
 
 function addBlog(event) {
 
-    event.preventDefault ()
-    
-    let title = document.getElementById('input-blog-title').value
-    let content = document.getElementById('input-blog-content').value
-    let image = document.getElementById('input-blog-image').files
+  event.preventDefault()
 
-    //agar gambar bisa diakses maka menggunakan URL
+  let title = document.getElementById('input-blog-title').value
+  let content = document.getElementById('input-blog-content').value
+  let image = document.getElementById('input-blog-image').files
 
-    image = URL.createObjectURL(image[0])
+  //agar gambar bisa diakses maka menggunakan URL
 
-    //console.log(image);
+  image = URL.createObjectURL(image[0])
 
-    let blog = {
-        title: title,
-        content: content,
-        image: image,
-        author: 'Alifia L Nirswany',
-        postAt: new Date()
-    }
-//push untuk mengirim blogs ke blog
+  //console.log(image);
 
-    blogs.push(blog)
+  let blog = {
+    title: title,
+    content: content,
+    image: image,
+    author: 'Alifia L Nirswany',
+    postAt: new Date()
+  }
+  //push untuk mengirim blogs ke blog
 
-    console.log(blog)
+  blogs.push(blog)
 
-    console.log(blogs)
+  console.log(blog)
 
-    for(let i = 0; i < blogs.length ; i++) {
-        console.log(blogs[i]);
-    }
-    renderBlog()
+  console.log(blogs)
+
+  for (let i = 0; i < blogs.length; i++) {
+    console.log(blogs[i]);
+  }
+  renderBlog()
 }
 
 //looping
 
 //for(let angka = 1; angka <= 100; angka++){
-  //  console.log(angka);
+//  console.log(angka);
 //}
 
 //manipulation DOM document object model
 
 //function manipulationHTML() {
-  //  let contentContainer = document.getElementById('contents')
-    //contentContainer.innerHTML = '<p>Selamat Datang</p>'
-    //console.log(contentContainer);
+//  let contentContainer = document.getElementById('contents')
+//contentContainer.innerHTML = '<p>Selamat Datang</p>'
+//console.log(contentContainer);
 //}
 
 //memunculkan apa yang di input
 
 function renderBlog() {
-    let contentContainer = document.getElementById('contents')
+  let contentContainer = document.getElementById('contents')
 
-    contentContainer.innerHTML = ``
+  contentContainer.innerHTML = ``
 
-    for(let i=0;i<blogs.length;i++) {
+  for (let i = 0; i < blogs.length; i++) {
 
-        contentContainer.innerHTML += `<div class="blog-list-item">
+    contentContainer.innerHTML += `<div class="blog-list-item">
         <div class="blog-image">
           <img src="${blogs[i].image}" alt="" />
         </div>
@@ -83,41 +83,41 @@ function renderBlog() {
       </div>
     </div>
   </div>`
-    }
-    // contentContainer.innerHTML = '<p>Selamat Datang</p>'
-    // console.log(contentContainer);
+  }
+  // contentContainer.innerHTML = '<p>Selamat Datang</p>'
+  // console.log(contentContainer);
 }
 
-let month = ['January','February','March','April','May','June','July','August','September','October','November','December']
+let month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-function getFullTime (time){
-console.log(time)
+function getFullTime(time) {
+  console.log(time)
 
-let date = time.getDate()
-console.log(date)
+  let date = time.getDate()
+  console.log(date)
 
-let monthIndex = time.getMonth()
-console.log(time.getMonth()) //indeks 0-11
+  let monthIndex = time.getMonth()
+  console.log(time.getMonth()) //indeks 0-11
 
-let year = time.getFullYear()
-console.log(time.getFullYear())
+  let year = time.getFullYear()
+  console.log(time.getFullYear())
 
-let hours = time.getHours()
-console.log(time.getHours())
+  let hours = time.getHours()
+  console.log(time.getHours())
 
-let minutes = time.getMinutes()
-console.log(time.getMinutes())
+  let minutes = time.getMinutes()
+  console.log(time.getMinutes())
 
-let fullTime = `${date} ${month[monthIndex]} ${year} ${hours} : ${minutes} WIB`
-return fullTime
+  let fullTime = `${date} ${month[monthIndex]} ${year} ${hours} : ${minutes} WIB`
+  return fullTime
 }
 
 function getDistanceTime() {
 
-  let timePost = new Date ('Wed Jan 04 2022 12:03:25 GMT+0700 (Western Indonesia Time)')
+  let timePost = new Date('Wed Jan 04 2022 12:03:25 GMT+0700 (Western Indonesia Time)')
   let timeNow = new Date()
 
-  let distance = timeNow - timePost 
+  let distance = timeNow - timePost
   let milisecond = 1000 //serbibu dalam 1 detik
   let seconds = 60
   let secondInHours = 3600
@@ -125,20 +125,20 @@ function getDistanceTime() {
 
   let distanceDay = Math.floor(distance / (milisecond * secondInHours * hoursInDay))
   let distanceHours = Math.floor(distance / (milisecond * secondInHours))
-  let distanceHourss = Math.floor(distance / (milisecond * secondInHours))-(distanceDay*hoursInDay)
-  let distanceMinutes = Math.floor(distance / (milisecond * seconds))-(distanceDay*hoursInDay*secondInHours)
-  let distanceSeconds = Math.floor(distance / (milisecond))-(distanceDay*hoursInDay*secondInHours*seconds)
+  let distanceHourss = Math.floor(distance / (milisecond * secondInHours)) - (distanceDay * hoursInDay)
+  let distanceMinutes = Math.floor(distance / (milisecond * seconds)) - (distanceDay * hoursInDay * seconds)
+  let distanceSeconds = Math.floor(distance / (milisecond)) - (distanceDay * hoursInDay * secondInHours * seconds)
 
   if (distanceDay >= 1) {
-   console.log (${distanceDay} `day ago` ${distanceHourss} `Hours Ago` ${distanceMinutes} `Minutes Ago`)
-  else {
-    console.log (${distanceHours} `Hours Ago`)
-  } 
+    return (`${distanceDay} day ago ${distanceHourss} Hours Ago ${distanceMinutes} Minutes Ago`)
+  } else {
+    return (`${distanceHours} Hours Ago`)
+  }
   if (distance > 1) {
-    console.log (${distanceDay} `day ago` ${distanceHourss} `Hours Ago`
-  } 
+    return (`${distanceDay} day ago ${distanceHourss} Hours Ago`)
+  }
 }
 
-getDistanceTime ()
+getDistanceTime()
 
-setInterval (renderBlog,5000)
+setInterval(renderBlog, 5000)
